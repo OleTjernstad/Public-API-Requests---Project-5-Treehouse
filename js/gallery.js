@@ -1,11 +1,15 @@
 class Gallery {
-    constructor(employees) {
-        this.employees = employees;
+    constructor(data) {
+        this.employees = data.map((employee) => {
+            return new Employee(employee);
+        });
     }
 
     render() {
         const gallery = document.querySelector("#gallery");
-    }
 
-    cardElement() {}
+        for (const employee of this.employees) {
+            gallery.appendChild(employee.card());
+        }
+    }
 }

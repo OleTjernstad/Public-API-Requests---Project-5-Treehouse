@@ -1,10 +1,8 @@
-/**
- * Run rendering functions after DOM has loaded
- */
-window.addEventListener("DOMContentLoaded", () => {
-    const employees = new Employees();
-    employees.loadEmployees();
-
-    const gallery = new Gallery(employees);
+const init = async () => {
+    const data = await loadEmployees();
+    console.log(data);
+    const gallery = new Gallery(data);
     gallery.render();
-});
+};
+
+init();
