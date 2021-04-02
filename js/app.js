@@ -4,4 +4,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     const employees = new Employees();
     employees.loadEmployees();
+
+    const gallery = new Gallery(employees);
+    gallery.render();
 });
