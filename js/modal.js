@@ -5,6 +5,10 @@ class Modal {
 
         this.modalContainer = this.modalContainerRenderer();
         this.modalWrapper.appendChild(this.modalContainer);
+        this.modalContainer.addEventListener("click", (event) =>
+            this.handleInteractionModalClose(event)
+        );
+
         this.setEmployeeInfo(uuid);
     }
 
@@ -16,7 +20,12 @@ class Modal {
                     id: "modal-close-btn",
                     className: "modal-close-btn",
                 },
-                [createElement("strong", { textContent: "X" })]
+                [
+                    createElement("strong", {
+                        className: "modal-close-x",
+                        textContent: "X",
+                    }),
+                ]
             ),
         ]);
         return wrapper("div", { className: "modal-container" }, [this.modal]);
@@ -31,5 +40,15 @@ class Modal {
 
     setEmployeeInfo(uuid) {
         this.modal.appendChild(this.getInfoContainer(uuid));
+    }
+
+    handleInteractionModalClose(event) {
+        if (
+            event.target.className === "modal-container" ||
+            event.target.className === "modal-close-btn" ||
+            event.target.className === "modal-close-x"
+        ) {
+            this.modalContainer.remove();
+        }
     }
 }
