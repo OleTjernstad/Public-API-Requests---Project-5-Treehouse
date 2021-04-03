@@ -65,7 +65,9 @@ class Gallery {
             }),
         ]);
 
-        filterForm.addEventListener("submit", (event) => console.log(event));
+        filterForm.addEventListener("submit", (event) =>
+            console.log(event.target[0].value)
+        );
         searchContainer.appendChild(filterForm);
     }
 }
