@@ -4,6 +4,7 @@ const init = async () => {
     const gallery = new Gallery(data);
     gallery.render();
     gallery.setInteractionEmployeeCard();
+    gallery.addFilterToGallery();
 };
 
 init();

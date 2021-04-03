@@ -47,4 +47,25 @@ class Gallery {
 
         new Modal(uuid, this.employees);
     }
+
+    addFilterToGallery() {
+        const searchContainer = document.querySelector(".search-container");
+        const filterForm = wrapper("form", { action: "#", method: "get" }, [
+            createElement("input", {
+                type: "search",
+                id: "search-input",
+                className: "search-input",
+                placeholder: "Search...",
+            }),
+            createElement("input", {
+                type: "submit",
+                value: "🔍",
+                id: "search-submit",
+                className: "search-submit",
+            }),
+        ]);
+
+        filterForm.addEventListener("submit", (event) => console.log(event));
+        searchContainer.appendChild(filterForm);
+    }
 }

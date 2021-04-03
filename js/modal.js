@@ -1,10 +1,10 @@
 class Modal {
     constructor(uuid, employees) {
-        this.modalWrapper = document.querySelector("#modal-wrapper");
+        this.body = document.querySelector("body");
         this.employees = employees;
 
         this.modalContainer = this.modalContainerRenderer();
-        this.modalWrapper.appendChild(this.modalContainer);
+        this.body.appendChild(this.modalContainer);
         this.modalContainer.addEventListener("click", (event) =>
             this.handleInteractionModalClose(event)
         );
