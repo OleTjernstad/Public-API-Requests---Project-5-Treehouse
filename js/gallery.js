@@ -38,6 +38,9 @@ class Gallery {
             case "card":
                 uuid = target.lastElementChild.dataset.uuid;
                 break;
+            case "card-info-container":
+                uuid = target.dataset.uuid;
+                break;
             default:
                 break;
         }
