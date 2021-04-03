@@ -72,16 +72,21 @@ class Employee {
             }),
             createElement("p", {
                 className: "modal-text",
-                textContent: `${this.location.street.number} ${
-                    this.location.street.name
-                }, ${this.location.city}, ${this.location.state
-                    .slice(0, 2)
-                    .toUpperCase()} ${this.location.postcode}`,
+                textContent: `${this.location.street.number} ${this.location.street.name}, ${this.location.city}, ${this.location.state} ${this.location.postcode}`,
             }),
             createElement("p", {
                 className: "modal-text",
-                textContent: `Birthday: ${this.dob.date}`,
+                textContent: `Birthday: ${this._formatBirthDate(
+                    this.dob.date
+                )}`,
             }),
         ]);
+    }
+
+    _formatBirthDate(date) {
+        const dateObject = new Date(date);
+        return `${
+            dateObject.getMonth() + 1
+        }/${dateObject.getDate()}/${dateObject.getFullYear()}`;
     }
 }
