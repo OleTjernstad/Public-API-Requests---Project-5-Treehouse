@@ -3,6 +3,7 @@ const init = async () => {
     console.log(data);
     const gallery = new Gallery(data);
     gallery.render();
+    gallery.setInteractionEmployeeCard();
 };
 
 init();

@@ -13,7 +13,7 @@ class Employee {
                 createElement("h3", {
                     id: "name",
                     className: "card-name cap",
-                    textContent: `${this.name.title} ${this.name.first} ${this.name.last}`,
+                    textContent: `${this.name.first} ${this.name.last}`,
                 }),
                 createElement("p", {
                     className: "card-text",
@@ -26,21 +26,23 @@ class Employee {
             ]
         );
 
+        infoContainer.dataset.uuid = this.login.uuid;
+
         const imgContainer = wrapper(
             "div",
             { className: "card-img-container" },
             [
                 createElement("img", {
                     className: "card-img",
-                    src: "https://place-hold.it/90x90",
-                    alt: "profile picture",
+                    src: this.picture.medium,
+                    alt: `profile picture ${this.name.first} ${this.name.last}`,
                 }),
             ]
         );
 
         return wrapper("div", { className: "card" }, [
-            infoContainer,
             imgContainer,
+            infoContainer,
         ]);
     }
 }
