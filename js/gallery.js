@@ -14,9 +14,8 @@ class Gallery {
     }
 
     setInteractionEmployeeCard() {
-        this.gallery.addEventListener(
-            "click",
-            this.handleInteractionEmployeeCard
+        this.gallery.addEventListener("click", (event) =>
+            this.handleInteractionEmployeeCard(event)
         );
     }
 
@@ -42,7 +41,7 @@ class Gallery {
             default:
                 break;
         }
-        console.log(uuid);
-        console.log(target.className);
+
+        new Modal(uuid, this.employees);
     }
 }
