@@ -68,15 +68,19 @@ class Employee {
             createElement("hr"),
             createElement("p", {
                 className: "modal-text",
-                textContent: "(555) 555-5555",
+                textContent: this.cell,
             }),
             createElement("p", {
                 className: "modal-text",
-                textContent: "123 Portland Ave., Portland, OR 97204",
+                textContent: `${this.location.street.number} ${
+                    this.location.street.name
+                }, ${this.location.city}, ${this.location.state
+                    .slice(0, 2)
+                    .toUpperCase()} ${this.location.postcode}`,
             }),
             createElement("p", {
                 className: "modal-text",
-                textContent: "Birthday: 10/21/2015",
+                textContent: `Birthday: ${this.dob.date}`,
             }),
         ]);
     }
