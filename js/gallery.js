@@ -93,6 +93,9 @@ class Gallery {
             }),
         ]);
 
+        filterForm.addEventListener("submit", (event) =>
+            event.preventDefault()
+        );
         filterForm.firstElementChild.addEventListener("search", (event) =>
             this.handleFilter(event.target.value)
         );
