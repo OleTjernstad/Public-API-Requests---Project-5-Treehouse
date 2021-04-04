@@ -20,6 +20,8 @@ const createElement = (elementName, props = []) => {
  * @param {string} elementName The HTML element name
  * @param {Object} props Object of element attributes key value pair
  * @param {HTMLElement[]} children An array with children HTML elements
+ *
+ * @returns {HTMLElement}
  */
 const wrapper = (elementName, props, children = []) => {
     const element = createElement(elementName, props);
