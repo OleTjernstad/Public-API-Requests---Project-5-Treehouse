@@ -11,7 +11,7 @@ class Employee {
             { className: "card-info-container" },
             [
                 createElement("h3", {
-                    id: "name",
+                    id: `name-${this.name.first}-${this.name.last}`,
                     className: "card-name cap",
                     textContent: `${this.name.first} ${this.name.last}`,
                 }),
