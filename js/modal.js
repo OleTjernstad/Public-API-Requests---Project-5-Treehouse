@@ -17,7 +17,7 @@ class Modal {
         const index = this.employees.findIndex(
             (employee) => employee === this.employee
         );
-        this.checkEmployeeIndex(index);
+        this.enableDisablePagination(index);
     }
 
     modalContainerRenderer() {
@@ -92,28 +92,33 @@ class Modal {
             if (this.checkEmployeeIndex(index) === "low") return;
             this.removeEmployeeInfo();
             this.setEmployeeInfo(this.employees[index - 1].login.uuid);
-            this.checkEmployeeIndex(index - 1);
+            this.enableDisablePagination(index - 1);
         } else if (element.id === "modal-next") {
             if (this.checkEmployeeIndex(index) === "high") return;
             this.removeEmployeeInfo();
 
             this.setEmployeeInfo(this.employees[index + 1].login.uuid);
-            this.checkEmployeeIndex(index + 1);
+            this.enableDisablePagination(index + 1);
         }
     }
 
     checkEmployeeIndex(index) {
         if (index === this.employees.length - 1) {
-            this.prevButton.disabled = false;
-            this.nextButton.disabled = true;
             return "high";
-        } else if (index === 0) {
-            this.prevButton.disabled = true;
-            this.nextButton.disabled = false;
+        }
+        if (index === 0) {
             return "low";
-        } else {
-            this.prevButton.disabled = false;
-            this.nextButton.disabled = false;
+        }
+    }
+    enableDisablePagination(index) {
+        this.prevButton.disabled = false;
+        this.nextButton.disabled = false;
+
+        if (index === this.employees.length - 1) {
+            this.nextButton.disabled = true;
+        }
+        if (index === 0) {
+            this.prevButton.disabled = true;
         }
     }
 }
