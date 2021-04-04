@@ -3,14 +3,19 @@ class Gallery {
         this.employees = data.map((employee) => {
             return new Employee(employee);
         });
+        this.filteredEmployees = this.employees;
 
         this.gallery = document.querySelector("#gallery");
     }
 
     render() {
-        for (const employee of this.employees) {
+        for (const employee of this.filteredEmployees) {
             this.gallery.appendChild(employee.card());
         }
+    }
+
+    removeAllEmployeeCards() {
+        this.gallery.querySelectorAll("*").forEach((n) => n.remove());
     }
 
     setInteractionEmployeeCard() {
@@ -45,7 +50,7 @@ class Gallery {
                 break;
         }
 
-        new Modal(uuid, this.employees);
+        new Modal(uuid, this.filteredEmployees);
     }
 
     addFilterToGallery() {
@@ -65,9 +70,26 @@ class Gallery {
             }),
         ]);
 
-        filterForm.addEventListener("submit", (event) =>
-            console.log(event.target[0].value)
+        filterForm.firstElementChild.addEventListener("search", (event) =>
+            this.handleFilter(event.target.value)
         );
+
         searchContainer.appendChild(filterForm);
+    }
+
+    handleFilter(searchString) {
+        this.filteredEmployees = this.employees.filter(
+            (employee) =>
+                employee.name.first
+                    .toLowerCase()
+                    .includes(searchString.toLowerCase()) ||
+                employee.name.last
+                    .toLowerCase()
+                    .includes(searchString.toLowerCase())
+        );
+        console.log(this.filteredEmployees);
+
+        this.removeAllEmployeeCards();
+        this.render();
     }
 }
