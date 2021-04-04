@@ -87,7 +87,6 @@ class Gallery {
                     .toLowerCase()
                     .includes(searchString.toLowerCase())
         );
-        console.log(this.filteredEmployees);
 
         this.removeAllEmployeeCards();
         this.render();
