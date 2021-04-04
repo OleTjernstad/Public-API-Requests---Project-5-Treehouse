@@ -68,7 +68,7 @@ class Employee {
             createElement("hr"),
             createElement("p", {
                 className: "modal-text",
-                textContent: this.cell,
+                textContent: this._formatPhoneNumber(this.cell),
             }),
             createElement("p", {
                 className: "modal-text",
@@ -88,5 +88,8 @@ class Employee {
         return `${
             dateObject.getMonth() + 1
         }/${dateObject.getDate()}/${dateObject.getFullYear()}`;
+    }
+    _formatPhoneNumber(number) {
+        return number.replace(/^.*(\d{3}).*(\d{3}).*(\d{4})$/, "($1) $2-$3");
     }
 }
