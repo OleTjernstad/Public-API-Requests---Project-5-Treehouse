@@ -70,7 +70,11 @@ header h1 {
 /* ===================================== 
    Gallery
 ======================================== */
-
+.no-result {
+    font-size: 1.3em;
+    color: rgba(180, 0, 0, 0.8);
+    font-weight: bolder;
+}
 .gallery {
     display: flex;
     flex-direction: row;

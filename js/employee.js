@@ -1,10 +1,23 @@
+/**
+ * Employee class hold employee parameters and build card and modal info
+ */
 class Employee {
+    /**
+     * Set class parameters
+     *
+     * @param {object} employee employee parametes to set in class
+     */
     constructor(employee) {
         for (const [key, value] of Object.entries(employee)) {
             this[key] = value;
         }
     }
 
+    /**
+     * Build employee card
+     *
+     * @returns {HTMLElement}
+     */
     card() {
         const infoContainer = wrapper(
             "div",
@@ -45,6 +58,11 @@ class Employee {
             infoContainer,
         ]);
     }
+    /**
+     * Build employee modal info
+     *
+     * @returns {HTMLElement}
+     */
     modalInfoContainer() {
         return wrapper("div", { className: "modal-info-container" }, [
             createElement("img", {
@@ -83,12 +101,24 @@ class Employee {
         ]);
     }
 
+    /**
+     * Formats the birth date to display format
+     *
+     * @param {string} date the date string from the api
+     * @returns string
+     */
     _formatBirthDate(date) {
         const dateObject = new Date(date);
         return `${
             dateObject.getMonth() + 1
         }/${dateObject.getDate()}/${dateObject.getFullYear()}`;
     }
+    /**
+     * Formats the cell number to display format
+     *
+     * @param {string} number the phone number from the api
+     * @returns string
+     */
     _formatPhoneNumber(number) {
         return number.replace(/^.*(\d{3}).*(\d{3}).*(\d{4})$/, "($1) $2-$3");
     }
