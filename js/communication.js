@@ -8,7 +8,7 @@ const loadEmployees = async () => {
         const response = await fetch(
             "https://randomuser.me/api/?results=12&nat=us"
         );
-        console.log(response);
+
         if (response.ok) {
             const data = await response.json();
             return data.results;
