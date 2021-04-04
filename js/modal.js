@@ -104,16 +104,16 @@ class Modal {
 
     checkEmployeeIndex(index) {
         if (index === this.employees.length - 1) {
-            this.prevButton.style.display = "";
-            this.nextButton.style.display = "none";
+            this.prevButton.disabled = false;
+            this.nextButton.disabled = true;
             return "high";
         } else if (index === 0) {
-            this.prevButton.style.display = "none";
-            this.nextButton.style.display = "";
+            this.prevButton.disabled = true;
+            this.nextButton.disabled = false;
             return "low";
         } else {
-            this.prevButton.style.display = "";
-            this.nextButton.style.display = "";
+            this.prevButton.disabled = false;
+            this.nextButton.disabled = false;
         }
     }
 }
